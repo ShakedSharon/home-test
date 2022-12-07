@@ -1,0 +1,31 @@
+<div class="form-group" style="padding: 100px ;" >
+    <h2>sign-up</h2>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div class="form-group">
+            <input type="email" name="email" placeholder="Email"  class="form-control" (change)="isValidFile(f)" ngModel/>
+            <p *ngIf="!isValidEmail(f) && f.value.email" class="error"> Email is invalid</p>
+        </div>
+        <br/> 
+        <div class="form-group">
+            <input type="password" name="password" placeholder="Password" class="form-control" (change)="isValidFile($event)" ngModel/>
+            <div *ngIf="!isValidPassword(f) && f.value.password" class="error">
+                <p *ngIf="f.value.password?.length < 6"> Password length should be at least 6 letters</p>
+                <p *ngIf="!isUpper(f.value.password)">Password should contain at least 1 capital letter</p>
+            </div>
+        </div>
+        <br/>
+        <div class="form-group">
+            <input type="password" name="passwordRepeat" placeholder="Repeat your password" class="form-control" (change)="isValidFile($event)" ngModel />
+            <div *ngIf="!equalPasswords(f)" class="error">
+                <p> Confirm password should be equal to the password</p>
+            </div>
+        </div>
+        <br/>
+        <div class="form-group">
+            <button class="btn btn-primary" name="button" type="submit" [disabled]="!isValidFile(f)"  routerLink="../">
+                Register
+            </button>
+        </div>
+
+    </form>
+</div>
