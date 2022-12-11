@@ -1,0 +1,13 @@
+button{
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color:rgb(106, 106, 223) ;
+    border-radius: 10%;
+    color: white;
+}
+form{
+    max-width: 400px;
+}
+.error{
+    color: red;
+}
